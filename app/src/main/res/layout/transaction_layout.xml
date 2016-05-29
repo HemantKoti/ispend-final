@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="85dp"
+    android:padding="5dp"
+    android:id="@+id/listViewItem">
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="29 May 2016"
+        android:textColor="@color/brown_color"
+        android:id="@+id/textViewDate"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="125dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Entertainment"
+        android:textColor="@color/link_color"
+        android:id="@+id/textViewCategory"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="100000"
+        android:id="@+id/textViewAmount"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="280dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Description: "
+        android:textStyle="bold"
+        android:id="@+id/textViewDescriptionLabel"
+        android:layout_below="@+id/textViewCategory"
+        android:layout_marginTop="15dp"
+        android:layout_alignLeft="@+id/textViewCategory"
+        android:layout_alignStart="@+id/textViewCategory" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Dinner at Bawarchi"
+        android:id="@+id/textViewDescription"
+        android:layout_alignBaseline="@+id/textViewDescriptionLabel"
+        android:layout_toRightOf="@+id/textViewDescriptionLabel"
+        android:layout_toEndOf="@+id/textViewDescriptionLabel" />
+</RelativeLayout>

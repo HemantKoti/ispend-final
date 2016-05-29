@@ -1,0 +1,84 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.rhcloud.httpispend_jntuhceh.ispend.FragmentSpendMoney">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Amount"
+
+        android:textColor="@color/text_color"
+        android:id="@+id/textViewItemName"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textViewItemName"
+        android:id="@+id/editTextAmount"
+        android:textColor="@color/text_color"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textViewDate"
+        android:layout_below="@+id/editTextAmount"
+        android:layout_marginTop="15dp"
+        android:text="Date"
+
+        android:textColor="@color/text_color" />
+
+
+    <TextView
+        android:id="@+id/textViewCategory"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/text_color"
+        android:layout_marginTop="15dp"
+        android:layout_below="@+id/editTextDate"
+        android:text="Category" />
+
+
+    <EditText
+        android:id="@+id/editTextCategory"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textViewCategory" />
+
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Spend Money"
+        android:id="@+id/buttonSpendMoney"
+        android:layout_below="@+id/editTextDescription"
+        android:background="@color/red"
+        android:textColor="@color/white"
+        android:layout_marginTop="25dp" />
+
+
+    <EditText
+        android:id="@+id/editTextDate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textViewDate" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:textAppearanceMedium"
+        android:text="Description"
+        android:id="@+id/textViewDescription"
+        android:layout_marginTop="15dp"
+        android:textColor="@color/text_color"
+        android:layout_below="@+id/editTextCategory"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textViewDescription"
+        android:id="@+id/editTextDescription"
+        android:textColor="@color/text_color"/>
+
+</RelativeLayout>

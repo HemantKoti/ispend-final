@@ -1,0 +1,141 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F5F5F5"
+    tools:context=".FragmentHome">
+
+    <!--<ImageView-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:id="@+id/imageViewCart"-->
+    <!--android:layout_centerVertical="true"-->
+    <!--android:layout_centerHorizontal="true"-->
+    <!--android:src="@drawable/cart" />-->
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Add Money"
+        android:id="@+id/buttonAddMoney"
+        android:background="@color/colorPrimary"
+        android:layout_marginLeft="40dp"
+        android:padding="10dp"
+        android:textColor="@color/white"
+        android:layout_marginBottom="40dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Spend Money"
+        android:textColor="@color/white"
+        android:background="@color/red"
+        android:padding="10dp"
+        android:layout_marginRight="40dp"
+        android:layout_marginBottom="40dp"
+        android:id="@+id/buttonSpendMoney"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textStyle="bold"
+        android:layout_marginTop="30dp"
+        android:text="New Text"
+        android:id="@+id/textViewDuration"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Total Budget"
+        android:textColor="@color/colorPrimary"
+        android:id="@+id/textViewTotalBudgetLabel"
+        android:layout_below="@+id/textViewDuration"
+        android:layout_alignLeft="@+id/buttonAddMoney"
+        android:layout_alignStart="@+id/buttonAddMoney"
+        android:layout_marginTop="65dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/colorPrimary"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="₹0"
+        android:id="@+id/textViewTotalBudget"
+        android:layout_alignTop="@+id/textViewTotalBudgetLabel"
+        android:layout_alignLeft="@+id/buttonSpendMoney"
+        android:layout_alignStart="@+id/buttonSpendMoney" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="20dp"
+        android:layout_below="@+id/textViewSpendsLabel"
+        android:background="@color/text_color"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="20dp"
+        android:layout_below="@+id/textViewAvailableLabel"
+        android:background="@color/text_color"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Spends"
+        android:textColor="@color/red"
+        android:id="@+id/textViewSpendsLabel"
+        android:layout_below="@+id/textViewTotalBudgetLabel"
+        android:layout_alignLeft="@+id/textViewTotalBudgetLabel"
+        android:layout_alignStart="@+id/textViewTotalBudgetLabel"
+        android:layout_marginTop="40dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/red"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="₹0"
+        android:id="@+id/textViewSpends"
+        android:layout_alignTop="@+id/textViewSpendsLabel"
+        android:layout_alignRight="@+id/textViewTotalBudget"
+        android:layout_alignEnd="@+id/textViewTotalBudget" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/link_color"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Available"
+        android:id="@+id/textViewAvailableLabel"
+        android:layout_below="@+id/textViewSpendsLabel"
+        android:layout_alignLeft="@+id/textViewSpendsLabel"
+        android:layout_alignStart="@+id/textViewSpendsLabel"
+        android:layout_marginTop="40dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/link_color"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="₹0"
+        android:id="@+id/textViewAvailable"
+        android:layout_alignBottom="@+id/textViewAvailableLabel"
+        android:layout_alignRight="@+id/textViewSpends"
+        android:layout_alignEnd="@+id/textViewSpends" />
+</RelativeLayout>

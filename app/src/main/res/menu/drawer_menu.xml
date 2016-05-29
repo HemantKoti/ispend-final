@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group
+        android:id="@+id/menu_top"
+        android:checkableBehavior="single" >
+        <item
+            android:id="@+id/id_home"
+            android:title="Home"
+            android:icon="@drawable/ic_home_black_24dp">
+        </item>
+        <item
+            android:id="@+id/id_add_money"
+            android:title="Add Money"
+            android:icon="@drawable/ic_attach_money_black_24dp">
+        </item>
+        <item
+            android:id="@+id/id_spend_money"
+            android:title="Spend Money"
+            android:icon="@drawable/ic_add_shopping_cart_black_24dp">
+        </item>
+        <item
+            android:id="@+id/id_transactions"
+            android:title="Transactions"
+            android:icon="@drawable/ic_swap_horiz_black_24dp">
+        </item>
+        <item
+            android:id="@+id/id_time_period"
+            android:title="Time Period"
+            android:icon="@drawable/ic_date_range_black_24dp">
+        </item>
+        <item
+            android:id="@+id/id_categories"
+            android:title="Categories"
+            android:icon="@drawable/ic_list_black_24dp">
+        </item>
+        <item
+            android:id="@+id/id_bar_graph"
+            android:title="Summary - Bar Graph"
+            android:icon="@drawable/ic_equalizer_black_24dp">
+        </item>
+        <item
+            android:id="@+id/id_pie_chart"
+            android:title="Summary - Pie Chart"
+            android:icon="@drawable/ic_pie_chart_black_24dp">
+        </item>
+        <item
+            android:id="@+id/id_synchronize"
+            android:title="Synchronize"
+            android:icon="@drawable/ic_cached_black_24dp">
+        </item>
+        <item
+            android:id="@+id/id_offers"
+            android:title="Offers"
+            android:icon="@drawable/ic_star_border_black_24dp">
+        </item>
+    </group>
+
+    <group
+        android:id="@+id/menu_bottom"
+        android:checkableBehavior="none" >
+        <item
+            android:title="Logout"
+            android:id="@+id/id_logout"
+            android:icon="@drawable/ic_exit_to_app_black_24dp">
+        </item>
+    </group>
+
+
+</menu>

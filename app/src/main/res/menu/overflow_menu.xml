@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item android:id="@+id/id_previous"
+        android:title="previous"
+        android:icon="@drawable/ic_chevron_left_black_24dp"
+        app:showAsAction="always">
+    </item>
+
+    <item android:id="@+id/id_duration"
+        android:title="duration"
+        android:icon="@drawable/ic_date_range_white_24dp"
+        app:showAsAction="always">
+    </item>
+
+    <item android:id="@+id/id_next"
+        android:title="next"
+        android:icon="@drawable/ic_chevron_right_black_24dp"
+        app:showAsAction="always">
+    </item>
+</menu>
