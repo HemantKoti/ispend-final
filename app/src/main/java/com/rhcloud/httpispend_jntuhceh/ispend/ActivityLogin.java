@@ -71,13 +71,7 @@ public class ActivityLogin extends AppCompatActivity {
                 if (validate()) {
                     User user = new User(email, password);
                     DatabaseHelper databaseHelper = new DatabaseHelper(getBaseContext());
-                    User returnedUser = databaseHelper.validateLogin(user);
-                    if(returnedUser == null) {
-                        showErrorMessage();
-                    }
-                    else {
-                        loginUser(returnedUser);
-                    }
+                    databaseHelper.validateLogin(user);
                 }
             }
         });
