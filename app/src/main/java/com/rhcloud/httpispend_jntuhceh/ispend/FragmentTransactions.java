@@ -13,6 +13,8 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.HashMap;
+
 public class FragmentTransactions extends Fragment {
 
     TextView textViewDuration;
@@ -142,7 +144,7 @@ public class FragmentTransactions extends Fragment {
         try {
             TransactionAdapter transactionAdapter = new TransactionAdapter(getContext(), R.layout.transaction_layout);
             while(cursor.moveToNext()) {
-                String transactionCategory = cursor.getString(cursor.getColumnIndex("TransactionType"));
+                String transactionCategory = cursor.getString(cursor.getColumnIndex("TransactionCategory"));
                 String transactionDate = dateTimeHelper.getFullDisplayString(dateTimeHelper.getStartDateObjectFromInsertString(cursor.getString(cursor.getColumnIndex("TransactionDate"))));
                 String transactionAmount = cursor.getString(cursor.getColumnIndex("TransactionAmount"));
                 String transactionDescription = cursor.getString(cursor.getColumnIndex("TransactionDescription"));
@@ -161,6 +163,25 @@ public class FragmentTransactions extends Fragment {
     }
 
     public void showTransactionsSummary() {
+//        Toast.makeText(getContext(), "entered", Toast.LENGTH_SHORT).show();
+        try {
+            TransactionSummaryAdapter transactionSummaryAdapter = new TransactionSummaryAdapter(getContext(), R.layout.transaction_summary_layout);
 
+            HashMap<String, String> transactionsSummaryHashMap = databaseHelper.getTransactionSummaryHashMap();
+
+            if(transactionsSummaryHashMap == null || transactionsSummaryHashMap.size() == 0) {
+                //do nothing
+            }
+            else {
+                for(String category : transactionsSummaryHashMap.keySet()) {
+                    TransactionSummary transactionSummary = new TransactionSummary(category, transactionsSummaryHashMap.get(category));
+                    transactionSummaryAdapter.add(transactionSummary);
+                }
+            }
+            listViewTransactions.setAdapter(transactionSummaryAdapter);
+        }
+        catch (Exception e) {
+            Toast.makeText(getContext(), e.toString(), Toast.LENGTH_LONG).show();
+        }
     }
 }

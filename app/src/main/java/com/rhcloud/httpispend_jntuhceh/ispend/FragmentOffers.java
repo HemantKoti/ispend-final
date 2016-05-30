@@ -51,7 +51,7 @@ public class FragmentOffers extends Fragment {
         String[] categories = {"Food", "Entertainment", "Electronics", "Fashion", "Other"};
         final ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(getContext(), android.R.layout.simple_list_item_1, categories);
 
-        textViewCategory = (TextView) view.findViewById(R.id.textViewCategory);
+        textViewCategory = (TextView) view.findViewById(R.id.textViewCategorySS);
         textViewCategory.setText("Showing offers for: Food");
 
         spinnerCategory = (Spinner) view.findViewById(R.id.editTextCategory);

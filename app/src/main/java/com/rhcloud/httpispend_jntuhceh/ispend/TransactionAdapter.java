@@ -2,7 +2,6 @@ package com.rhcloud.httpispend_jntuhceh.ispend;
 
 import android.content.Context;
 import android.graphics.Color;
-import android.graphics.Typeface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -47,7 +46,7 @@ public class TransactionAdapter extends ArrayAdapter {
             LayoutInflater layoutInflater = (LayoutInflater) this.getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             row = layoutInflater.inflate(R.layout.transaction_layout, parent, false);
             transactionHolder = new TransactionHolder();
-            transactionHolder.textViewCategory = (TextView) row.findViewById(R.id.textViewCategory);
+            transactionHolder.textViewCategory = (TextView) row.findViewById(R.id.textViewCategorySS);
             transactionHolder.textViewDate = (TextView) row.findViewById(R.id.textViewDate);
             transactionHolder.textViewAmount = (TextView) row.findViewById(R.id.textViewAmount);
             transactionHolder.textViewDescription = (TextView) row.findViewById(R.id.textViewDescription);

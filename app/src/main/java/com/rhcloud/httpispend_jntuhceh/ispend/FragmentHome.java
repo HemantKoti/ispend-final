@@ -26,7 +26,7 @@ public class FragmentHome extends Fragment {
 
     View homeFragmentView;
 
-    TransactionSummary transactionSummary;
+    SpendsSummary spendsSummary;
 
     FragmentTransaction fragmentTransaction;
     NavigationView navigationView;
@@ -86,10 +86,10 @@ public class FragmentHome extends Fragment {
     public void updateContents() {
         textViewDuration.setText(dateTimeHelper.getFullDisplayString(userLocalStore.getDateRange()));
 
-        transactionSummary = databaseHelper.getTransactionSummary();
+        spendsSummary = databaseHelper.getTransactionSummary();
 
-        textViewTotalBudget.setText("₹" + transactionSummary.totalBudget);
-        textViewSpends.setText("₹" + transactionSummary.totalSpends);
-        textViewAvailable.setText("₹" + transactionSummary.availableAmount);
+        textViewTotalBudget.setText("₹" + spendsSummary.totalBudget);
+        textViewSpends.setText("₹" + spendsSummary.totalSpends);
+        textViewAvailable.setText("₹" + spendsSummary.availableAmount);
     }
 }

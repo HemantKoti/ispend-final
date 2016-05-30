@@ -13,7 +13,7 @@
         android:layout_marginTop="10dp">
 
         <TextView
-            android:id="@+id/textViewCategory"
+            android:id="@+id/textViewCategorySS"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
@@ -27,8 +27,8 @@
             android:id="@+id/editTextCategory"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_alignBaseline="@id/textViewCategory"
-            android:layout_toRightOf="@id/textViewCategory"
+            android:layout_alignBaseline="@id/textViewCategorySS"
+            android:layout_toRightOf="@id/textViewCategorySS"
             android:drawSelectorOnTop="true" />
 
     </RelativeLayout>
@@ -41,7 +41,7 @@
         android:layout_marginLeft="15dp"
         android:textColor="@color/black"
         android:text="Showing offers for: "
-        android:id="@+id/textViewCategory"
+        android:id="@+id/textViewCategorySS"
         android:textStyle="bold"/>
 
     <ListView

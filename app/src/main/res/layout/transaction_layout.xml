@@ -22,7 +22,7 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Entertainment"
         android:textColor="@color/link_color"
-        android:id="@+id/textViewCategory"
+        android:id="@+id/textViewCategorySS"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
@@ -43,10 +43,10 @@
         android:text="Description: "
         android:textStyle="bold"
         android:id="@+id/textViewDescriptionLabel"
-        android:layout_below="@+id/textViewCategory"
+        android:layout_below="@+id/textViewCategorySS"
         android:layout_marginTop="15dp"
-        android:layout_alignLeft="@+id/textViewCategory"
-        android:layout_alignStart="@+id/textViewCategory" />
+        android:layout_alignLeft="@+id/textViewCategorySS"
+        android:layout_alignStart="@+id/textViewCategorySS" />
 
     <TextView
         android:layout_width="wrap_content"

@@ -4,10 +4,9 @@
     android:layout_height="match_parent"
     tools:context="com.rhcloud.httpispend_jntuhceh.ispend.FragmentPieChart">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <com.github.mikephil.charting.charts.PieChart
+        android:id="@+id/pieChart"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="pie chart" />
+        android:layout_height="match_parent" />
 
 </FrameLayout>

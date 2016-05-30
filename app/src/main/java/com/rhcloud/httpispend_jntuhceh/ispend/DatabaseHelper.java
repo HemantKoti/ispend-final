@@ -8,6 +8,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  * Created by Muneer on 23-05-2016.
@@ -212,7 +213,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
     }
 
-    public TransactionSummary getTransactionSummary() {
+    public SpendsSummary getTransactionSummary() {
         UserLocalStore userLocalStore = new UserLocalStore(context);
         DateRange dateRange = userLocalStore.getDateRange();
         DateTimeHelper dateTimeHelper = new DateTimeHelper();
@@ -247,12 +248,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             }
 
             availableAmount = totalBudget - totalSpends;
-            TransactionSummary transactionSummary = new TransactionSummary(availableAmount.toString(), totalBudget.toString(), totalSpends.toString());
-            return transactionSummary;
+            SpendsSummary spendsSummary = new SpendsSummary(availableAmount.toString(), totalBudget.toString(), totalSpends.toString());
+            return spendsSummary;
         }
         catch (Exception e) {
             Toast.makeText(context, e.toString(), Toast.LENGTH_LONG).show();
-            return new TransactionSummary("0", "0", "0");
+            return new SpendsSummary("0", "0", "0");
         }
     }
 
@@ -270,7 +271,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         String query;
 
         try {
-            query = "SELECT * FROM Transactions WHERE Email = ? AND TransactionDate BETWEEN ? AND ?";
+            query = "SELECT * FROM Transactions WHERE Email = ? AND TransactionDate BETWEEN ? AND ? ORDER BY TransactionDate DESC";
             cursor = db.rawQuery(query, new String[] {email, startDateString, endDateString});
             return cursor;
         }
@@ -278,5 +279,44 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             Toast.makeText(context, e.toString(), Toast.LENGTH_LONG).show();
             return null;
         }
+    }
+
+    public HashMap<String, String> getTransactionSummaryHashMap() {
+        UserLocalStore userLocalStore = new UserLocalStore(context);
+        DateRange dateRange = userLocalStore.getDateRange();
+        DateTimeHelper dateTimeHelper = new DateTimeHelper();
+
+        String email = userLocalStore.getLoggedInUser().email;
+        String startDateString = dateTimeHelper.getInsertString(dateRange.startDateObject);
+        String endDateString = dateTimeHelper.getInsertString(dateRange.endDateObject);
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = null;
+        String query;
+
+        HashMap<String, String> transactionSummary = new HashMap<>();
+
+        try {
+            query = "SELECT TransactionCategory, SUM(TransactionAmount) AS TotalAmount FROM Transactions WHERE TransactionType = 'Spends' AND Email = ? AND TransactionDate BETWEEN ? AND ? GROUP BY TransactionCategory ORDER BY SUM(TransactionAmount) DESC";
+            cursor = db.rawQuery(query, new String[] {email, startDateString, endDateString});
+
+            if(cursor == null || cursor.getCount() == 0) {
+                return null;
+            }
+            else {
+                while(cursor.moveToNext()) {
+                    String categoryName = cursor.getString(0);
+                    Integer totalAmount = cursor.getInt(1);
+
+                    transactionSummary.put(categoryName, totalAmount.toString());
+                }
+            }
+        }
+        catch (Exception e) {
+            Toast.makeText(context, e.toString(), Toast.LENGTH_LONG).show();
+            return null;
+        }
+
+        return transactionSummary;
     }
 }

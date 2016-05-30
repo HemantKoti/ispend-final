@@ -122,7 +122,7 @@ public class FragmentSpendMoney extends Fragment {
         builderSingle.setPositiveButton("Add New Category", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                showAddCategoryAlertDialog("Income");
+                showAddCategoryAlertDialog("Spends");
             }
         });
 

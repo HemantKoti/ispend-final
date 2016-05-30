@@ -1,14 +1,29 @@
 package com.rhcloud.httpispend_jntuhceh.ispend;
 
 /**
- * Created by Muneer on 29-05-2016.
+ * Created by Muneer on 22-03-2016.
  */
 public class TransactionSummary {
-    String totalBudget, totalSpends, availableAmount;
+    String transactionCategory, totalAmount;
 
-    public TransactionSummary(String availableAmount, String totalBudget, String totalSpends) {
-        this.availableAmount = availableAmount;
-        this.totalBudget = totalBudget;
-        this.totalSpends = totalSpends;
+    public TransactionSummary(String transactionCategory, String totalAmount) {
+        this.transactionCategory = transactionCategory;
+        this.totalAmount = totalAmount;
+    }
+
+    public String getTransactionCategory() {
+        return transactionCategory;
+    }
+
+    public void setTransactionCategory(String transactionCategory) {
+        this.transactionCategory = transactionCategory;
+    }
+
+    public String getTotalAmount() {
+        return totalAmount;
+    }
+
+    public void setTotalAmount(String totalAmount) {
+        this.totalAmount = totalAmount;
     }
 }

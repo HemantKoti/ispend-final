@@ -24,6 +24,8 @@ import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.github.mikephil.charting.charts.PieChart;
+
 import java.util.HashMap;
 
 public class ActivityWelcome extends AppCompatActivity {
@@ -265,9 +267,6 @@ public class ActivityWelcome extends AppCompatActivity {
                 showPopUpMenu(findViewById(R.id.id_duration));
                 break;
         }
-
-
-
         return super.onOptionsItemSelected(item);
     }
 
@@ -281,6 +280,12 @@ public class ActivityWelcome extends AppCompatActivity {
         else if(currentFragment instanceof FragmentTransactions) {
             //Toast.makeText(getApplicationContext(), "Transactions", Toast.LENGTH_SHORT).show();
             ((FragmentTransactions) currentFragment).updateContents();
+        }
+        else if(currentFragment instanceof FragmentPieChart) {
+            ((FragmentPieChart) currentFragment).updateContents();
+        }
+        else if(currentFragment instanceof FragmentBarGraph) {
+            ((FragmentBarGraph) currentFragment).updateContents();
         }
     }
 
