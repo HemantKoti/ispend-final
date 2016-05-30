@@ -102,7 +102,7 @@ public class FragmentTransactions extends Fragment {
         try {
             TransactionAdapter transactionAdapter = new TransactionAdapter(getContext(), R.layout.transaction_layout);
             while(cursor.moveToNext()) {
-                String transactionCategory = cursor.getString(cursor.getColumnIndex("TransactionType"));
+                String transactionCategory = cursor.getString(cursor.getColumnIndex("TransactionCategory"));
                 String transactionDate = dateTimeHelper.getFullDisplayString(dateTimeHelper.getStartDateObjectFromInsertString(cursor.getString(cursor.getColumnIndex("TransactionDate"))));
                 String transactionAmount = cursor.getString(cursor.getColumnIndex("TransactionAmount"));
                 String transactionDescription = cursor.getString(cursor.getColumnIndex("TransactionDescription"));

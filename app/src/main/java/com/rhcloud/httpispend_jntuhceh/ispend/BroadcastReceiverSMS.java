@@ -49,6 +49,7 @@ public class BroadcastReceiverSMS extends BroadcastReceiver {
                     if(helperClass.isPurchaseSMS(message)) {
                         String toastString = "Amount: " + purchaseDetails.get("Amount") + "\n" + "Merchant Name: " + purchaseDetails.get("MerchantName");
                         Toast.makeText(context, toastString, Toast.LENGTH_LONG).show();
+                        new DatabaseHelper(context).insertPurchaseFromSMS(purchaseDetails);
                     }
                 } // end for loop
             } // bundle is null

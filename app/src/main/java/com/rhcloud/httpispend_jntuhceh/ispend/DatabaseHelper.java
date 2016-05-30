@@ -10,6 +10,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 
 /**
@@ -575,11 +576,47 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
     }
 
-    public void showErrorMessage()
-    {
-        AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(context);
-        dialogBuilder.setMessage("The email and password you entered don't match.");
-        dialogBuilder.setPositiveButton("OK", null);
-        dialogBuilder.show();
+    /*------------------------------------------------------------------------------Transaction from SMS-----------------------------------------------------------*/
+    void insertPurchaseFromSMS(HashMap<String, String> purchaseDetails) {
+        HelperClass helperClass = new HelperClass(context);
+        DateTimeHelper dateTimeHelper = new DateTimeHelper();
+
+        Cursor res = null;
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        try {
+            String loginQuery = "SELECT * FROM Users";
+            res = db.rawQuery(loginQuery, null);
+            if(res == null || res.getCount() == 0) {
+                Toast.makeText(context, "No User Registered on this Device", Toast.LENGTH_LONG).show();
+            }
+            else {
+                while(res.moveToNext()) {
+                    String email = res.getString(0);
+                    String transactionDate = dateTimeHelper.getInsertString(new Date());
+
+                    Transaction transaction = new Transaction(email, purchaseDetails.get("Amount"), helperClass.getCategory(purchaseDetails.get("MerchantName")), transactionDate, "at " + purchaseDetails.get("MerchantName"), "Spends");
+
+                    ContentValues contentValues = new ContentValues();
+                    contentValues.put("Email", transaction.email);
+                    contentValues.put("TransactionType", transaction.transactionType);
+                    contentValues.put("TransactionDate", transaction.transactionDate);
+                    contentValues.put("TransactionDate", transaction.transactionDate);
+                    contentValues.put("TransactionCategory", transaction.transactionCategory);
+                    contentValues.put("TransactionAmount", transaction.transactionAmount);
+                    contentValues.put("TransactionDescription", transaction.transactionDescription);
+                    contentValues.put("IsDirty", 1);
+
+                    long status = db.insert(TRANSACTIONS_TABLE_NAME, null, contentValues);
+                    if(status == -1) {
+                        Toast.makeText(context, "This transaction is already added", Toast.LENGTH_SHORT).show();
+                    }
+                }
+                Toast.makeText(context, "Transaction successfully added from SMS", Toast.LENGTH_LONG).show();
+            }
+        }
+        catch (Exception e) {
+            Toast.makeText(context, e.toString(), Toast.LENGTH_LONG).show();
+        }
     }
 }

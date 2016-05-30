@@ -163,7 +163,7 @@ public class HelperClass {
             }
         }
 
-        return new String("Other");
+        return new String("Misc.");
     }
 
     public static  Date getBeginDate() {
