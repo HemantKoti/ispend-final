@@ -119,15 +119,6 @@ public class ActivityWelcome extends AppCompatActivity {
                         item.setChecked(true);
                         break;
 
-                    case R.id.id_time_period:
-                        fragmentTransaction = getSupportFragmentManager().beginTransaction();
-                        fragmentTransaction.replace(R.id.mainContainer, new FragmentDuration());
-                        fragmentTransaction.commit();
-                        getSupportActionBar().setTitle(new DateTimeHelper().getActionBarDisplayString(userLocalStore.getDateRange()));
-                        drawerLayout.closeDrawers();
-                        item.setChecked(true);
-                        break;
-
                     case R.id.id_categories:
                         fragmentTransaction = getSupportFragmentManager().beginTransaction();
                         fragmentTransaction.replace(R.id.mainContainer, new FragmentCategories());
