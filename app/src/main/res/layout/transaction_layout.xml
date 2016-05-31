@@ -35,7 +35,7 @@
         android:id="@+id/textViewAmount"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
-        android:layout_marginLeft="280dp"/>
+        android:layout_marginLeft="255dp"/>
 
     <TextView
         android:layout_width="wrap_content"

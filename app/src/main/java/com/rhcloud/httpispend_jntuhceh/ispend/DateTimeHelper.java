@@ -75,7 +75,7 @@ public class DateTimeHelper {
 
     public Date getWeekStartDateObject() {
         Calendar c = Calendar.getInstance();
-        c.setFirstDayOfWeek(Calendar.MONDAY);
+        //c.setFirstDayOfWeek(Calendar.MONDAY);
         c.set(Calendar.DAY_OF_WEEK, Calendar.MONDAY);
         setTimeToBeginningOfDay(c);
         return c.getTime();
@@ -83,7 +83,7 @@ public class DateTimeHelper {
 
     public Date getWeekEndDateObject() {
         Calendar c = Calendar.getInstance();
-        c.setFirstDayOfWeek(Calendar.MONDAY);
+        //c.setFirstDayOfWeek(Calendar.MONDAY);
         c.set(Calendar.DAY_OF_WEEK, Calendar.MONDAY);
         setTimeToEndofDay(c);
         c.add(Calendar.DATE, 6);
@@ -178,5 +178,11 @@ public class DateTimeHelper {
 
         String insertString = getInsertString(date);
         return insertString;
+    }
+
+    public String getDisplayStringFromDateObject(Date date) {
+        DateFormat displayFormat = new SimpleDateFormat("EEE MMM d yyyy");
+        String dateInWords = displayFormat.format(date);
+        return dateInWords;
     }
 }

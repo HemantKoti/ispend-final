@@ -5,6 +5,7 @@ import android.app.DatePickerDialog;
 import android.content.DialogInterface;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -20,6 +21,7 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 
 
 public class FragmentAddMoney extends Fragment {
@@ -45,16 +47,22 @@ public class FragmentAddMoney extends Fragment {
 
     Button buttonAddMoney;
 
+    NavigationView navigationView;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View addMoneyFragmentView  = inflater.inflate(R.layout.fragment_add_money, container, false);
+        final View addMoneyFragmentView  = inflater.inflate(R.layout.fragment_add_money, container, false);
         addMoneyFragmentView.setBackgroundColor(Color.WHITE);
 
         userLocalStore = new UserLocalStore(getContext());
         databaseHelper = new DatabaseHelper(getContext());
         dateTimeHelper = new DateTimeHelper();
+
+        Date today = new Date();
+        displayDateString = dateTimeHelper.getDisplayStringFromDateObject(today);
+        insertDateString = dateTimeHelper.getInsertString(today);
 
         editTextCategory = (EditText) addMoneyFragmentView.findViewById(R.id.editTextCategory);
         editTextCategory.setOnTouchListener(new View.OnTouchListener() {
@@ -69,6 +77,7 @@ public class FragmentAddMoney extends Fragment {
 
         myCalendar = Calendar.getInstance();
         editTextDate = (EditText) addMoneyFragmentView.findViewById(R.id.editTextDate);
+        editTextDate.setText(displayDateString);
         editTextDate.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
@@ -89,15 +98,21 @@ public class FragmentAddMoney extends Fragment {
         buttonAddMoney.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String email = userLocalStore.getLoggedInUser().email;
-                String transactionType = "Income";
-                String transactionDate = insertDateString;
-                String transactionCategory = editTextCategory.getText().toString();
-                String transactionAmount = editTextAmount.getText().toString();
-                String transactionDescription = editTextDescription.getText().toString();
+                if(validate()) {
+                    String email = userLocalStore.getLoggedInUser().email;
+                    String transactionType = "Income";
+                    String transactionDate = insertDateString;
+                    String transactionCategory = editTextCategory.getText().toString();
+                    String transactionAmount = editTextAmount.getText().toString();
+                    String transactionDescription = editTextDescription.getText().toString();
 
-                Transaction transaction = new Transaction(email, transactionAmount, transactionCategory, transactionDate, transactionDescription, transactionType);
-                databaseHelper.addMoney(transaction);
+                    Transaction transaction = new Transaction(email, transactionAmount, transactionCategory, transactionDate, transactionDescription, transactionType);
+                    databaseHelper.addMoney(transaction);
+
+                    getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.mainContainer, new FragmentTransactions()).commit();
+                    navigationView = (NavigationView) ((View) (getActivity().findViewById(R.id.drawer_layout))).findViewById(R.id.navigationView);
+                    navigationView.setCheckedItem(R.id.id_transactions);
+                }
             }
         });
 
@@ -189,5 +204,57 @@ public class FragmentAddMoney extends Fragment {
             Toast.makeText(getContext(), insertDateString, Toast.LENGTH_SHORT).show();
         }
     };
+
+    public boolean validate() {
+
+        String amount = editTextAmount.getText().toString();
+        if(!isValidAmount(amount)) {
+            editTextAmount.setError("Enter amount");
+            editTextAmount.requestFocus();
+            return false;
+        }
+
+        String date = editTextDate.getText().toString();
+        if(!isValidDate(date)) {
+            editTextDate.setError("Enter Date");
+            editTextDate.requestFocus();
+            return false;
+        }
+
+        String category = editTextCategory.getText().toString();
+        if(!isValidCategory(category)) {
+            editTextCategory.setError("Select a Category");
+            editTextCategory.requestFocus();
+            return false;
+        }
+
+        return true;
+    }
+
+    private boolean isValidAmount(String amount) {
+        if (amount != null && amount.length() > 0) {
+            try {
+                Float.parseFloat(amount);
+                return true;
+            }catch (Exception e) {
+                return false;
+            }
+        }
+        return false;
+    }
+
+    private boolean isValidDate(String date) {
+        if (date != null && date.length() > 0) {
+            return true;
+        }
+        return false;
+    }
+
+    private boolean isValidCategory(String category) {
+        if (category != null && category.length() > 0) {
+            return true;
+        }
+        return false;
+    }
 
 }

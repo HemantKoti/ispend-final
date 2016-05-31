@@ -90,7 +90,7 @@ public class FragmentCategories extends Fragment {
 
     void showRemoveCategoryAlertDialog(final String categoryName, final String categoryType) {
         final AlertDialog.Builder alertDialog = new AlertDialog.Builder(getContext());
-        alertDialog.setTitle("Delete " + categoryName + " ?");
+        alertDialog.setTitle("Delete " + categoryName + " and Transactions with Category " + categoryName + "?");
 
         alertDialog.setPositiveButton("Delete", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int which) {

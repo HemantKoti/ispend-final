@@ -64,7 +64,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         if(res == -1)
             return false;
         else {
-            String[] categoriesArray = {"Food", "Entertainment", "Electronics", "Clothing", "Footwear" , "Miscellaneous"};
+            String[] categoriesArray = {"Food", "Entertainment", "Electronics", "Clothing", "Footwear" , "Misc."};
             for(int i = 0; i < categoriesArray.length; i++) {
                 contentValues = new ContentValues();
                 contentValues.put("Email", user.email);
@@ -179,6 +179,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
             if(db.delete(CATEGORIES_TABLE_NAME, "CategoryName = ? AND Email = ? AND CategoryType = ?", new String[] {categoryName, email, categoryType}) > 0) {
                 Toast.makeText(context, categoryName + " deleted successfully", Toast.LENGTH_SHORT).show();
+                int count = db.delete(TRANSACTIONS_TABLE_NAME, "Email = ? AND TransactionCategory = ?", new String[] {email, categoryName});
+                if(count == 1) {
+                    Toast.makeText(context, count + " Transaction with category " + categoryName + " deleted", Toast.LENGTH_SHORT).show();
+                }
+                else if(count > 0){
+                    Toast.makeText(context, count + " Transactions with category " + categoryName + " deleted", Toast.LENGTH_SHORT).show();
+                }
             }
             else {
                 Toast.makeText(context, "Unable delete " + categoryName, Toast.LENGTH_SHORT).show();
