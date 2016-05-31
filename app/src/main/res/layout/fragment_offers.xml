@@ -12,23 +12,10 @@
         android:orientation="horizontal"
         android:layout_marginTop="10dp">
 
-        <TextView
-            android:id="@+id/textViewCategorySS"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:textAppearance="?android:textAppearanceMedium"
-            android:layout_marginLeft="15dp"
-            android:text="Category: "
-            android:textStyle="bold"
-            android:textColor="@color/black"/>
-
         <Spinner
             android:id="@+id/editTextCategory"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_alignBaseline="@id/textViewCategorySS"
-            android:layout_toRightOf="@id/textViewCategorySS"
             android:drawSelectorOnTop="true" />
 
     </RelativeLayout>
