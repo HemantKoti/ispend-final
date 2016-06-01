@@ -13,6 +13,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -61,8 +62,13 @@ public class FragmentOffers extends Fragment {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 //Toast.makeText(MainActivity.this, spinner.getSelectedItem().toString(), Toast.LENGTH_SHORT).show();
                 //Toast.makeText(getContext(), listViewCategoriesArrayAdapter.getItem(position), Toast.LENGTH_SHORT).show();
-                new BackgroundTaskOffers(arrayAdapter.getItem(position)).execute();
-                textViewCategory.setText("Showing offers for: " + arrayAdapter.getItem(position));
+                if(new HelperClass(getContext()).isNetworkAvailable()) {
+                    new BackgroundTaskOffers(arrayAdapter.getItem(position)).execute();
+                    textViewCategory.setText("Showing offers for: " + arrayAdapter.getItem(position));
+                }
+                else {
+                    Toast.makeText(getContext(), "No Internet Connection detected", Toast.LENGTH_LONG).show();
+                }
             }
 
             @Override
